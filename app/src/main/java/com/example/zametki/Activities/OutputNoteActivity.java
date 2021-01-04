@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class OutputNoteActivity extends AppCompatActivity {
     TextView name, data, descr;
-    Button saveThis;
+    Button saveThis, deleteThis;
     Note note;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class OutputNoteActivity extends AppCompatActivity {
         data = findViewById(R.id.textView_data);
         descr = findViewById(R.id.textView_note);
         saveThis = findViewById(R.id.button_save);
+        deleteThis = findViewById(R.id.button_delete);
 
         Bundle arguments = getIntent().getExtras();
         if (null != arguments) {
@@ -45,7 +46,19 @@ public class OutputNoteActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        deleteThis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                try {
+                    DB.deleteNote(note.id);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finish();
+            }
+
+        });
         saveThis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
