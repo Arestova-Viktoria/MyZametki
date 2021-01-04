@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                 Intent cr;
                 cr = new Intent(MainActivity.this, CreateActivity.class);
                 startActivity(cr);
-
             }
+
         });
     }
 
@@ -69,4 +69,5 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         i.putExtra("id", notes.get(position).id);
         startActivity(i);
     }
+
 }
